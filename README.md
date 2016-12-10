@@ -1,19 +1,18 @@
 # HackerNews Jobs Twitter Integration
 
-A simple Firebase listener to get the new job post from HackerNews and to publish them on the [@hackernewsjobs](https://twitter.com/hackernewsjobs) channel on Twitter.
+A simple Firebase listener in node.js to get the new job posts from HackerNews and then to publish them on the [@hackernewsjobs](https://twitter.com/hackernewsjobs) channel on Twitter.
 
-This project was started as a learning experience for me to get familiar with Angular.js, and I welcome anyone else in the web development community to play with it :)
+This project was started as a learning experience and I welcome anyone else in the web development community to play with it :)
 
 ## Installation
 
-Set the environemnt variables defining your mySQL server information:
+Set the environemnt variables:
 
 | Environment Variable |
 | ---| --- |
 | TWITTER_CONSUMER_KEY |
 | TWITTER_CONSUMER_SECRET |
 | TWITTER_ACCESS_TOKEN_KEY |
-| DATABASE_USER |
 | TWITTER_ACCESS_TOKEN_SECRET |
 
 Run `npm start` or `node .` for a dev server.
