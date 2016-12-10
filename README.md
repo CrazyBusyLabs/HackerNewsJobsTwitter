@@ -2,11 +2,11 @@
 
 A simple Firebase listener to get the new job post from HackerNews and to publish them on the [@hackernewsjobs](https://twitter.com/hackernewsjobs) channel on Twitter.
 
-This project was started as a learning experience for me to get familiar with Angular.js, and I welcome anyone else in the web development community to play with it :)
+This project was started as a learning experience and I welcome anyone else in the web development community to play with it :)
 
 ## Installation
 
-Set the environemnt variables defining your mySQL server information:
+Set the environemnt variables:
 
 | Environment Variable |
 | ---| --- |
