@@ -18,7 +18,7 @@ var client = new twitter({
 });
 
 console.log('Listening to Firebase');
-var newStoriesRef = firebase.database().ref("/v0/newstories/0"); 
+var newStoriesRef = firebase.database().ref("/v0/jobstories/0"); 
 newStoriesRef.on("value", function(snapshot) {
   var storyRef = firebase.database().ref("/v0/item/"+snapshot.val());
   storyRef.on('value', function(storySnapshot) {
@@ -28,11 +28,12 @@ newStoriesRef.on("value", function(snapshot) {
     var story = storySnapshot.val();
     storyRef.off();
 
-    console.log(`${story.id}: ${story.title} (${story.url})`);
-    if (story.type === 'job') {
+    console.log(`${story.id}: ${story.title} (${story.url}) [${story.deleted} ${story.dead}]`);
+    if ((typeof story.deleted === 'undefined' || story.deleted === false)
+        && (typeof story.dead === 'undefined' || story.dead === false)) {
       client.post('statuses/update', {status: `${story.title} ${story.url}` },  function(error, tweet, response) {
         if(error) throw error;
-          console.log(`@@@ Twitted`);
+          console.log(`${story.id}: @@@ Tweeted`);
         });
     }
 
