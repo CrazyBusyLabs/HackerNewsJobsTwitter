@@ -1,6 +1,6 @@
 # HackerNews Jobs Twitter Integration
 
-A simple Firebase listener to get the new job post from HackerNews and to publish them on the @hackernewsjobds channel on Twitter.
+A simple Firebase listener to get the new job post from HackerNews and to publish them on the [@hackernewsjobs](https://twitter.com/hackernewsjobs) channel on Twitter.
 
 This project was started as a learning experience for me to get familiar with Angular.js, and I welcome anyone else in the web development community to play with it :)
 
