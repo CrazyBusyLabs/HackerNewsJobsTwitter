@@ -1,0 +1,23 @@
+{
+  "name": "hackernews-jobs-twitter",
+  "version": "1.0.0",
+  "description": "Listen to HackerNews and post the job postings on Twitter @hackernewsjobs",
+  "main": "listener.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcurlier/hackernews-jobs-twitter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcurlier/hackernews-jobs-twitter/issues"
+  },
+  "homepage": "https://github.com/jcurlier/hackernews-jobs-twitter#readme",
+  "dependencies": {
+    "firebase": "^3.6.3",
+    "twitter": "^1.5.0"
+  }
+}
