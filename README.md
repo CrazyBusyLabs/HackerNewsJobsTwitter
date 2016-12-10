@@ -13,7 +13,6 @@ Set the environemnt variables defining your mySQL server information:
 | TWITTER_CONSUMER_KEY |
 | TWITTER_CONSUMER_SECRET |
 | TWITTER_ACCESS_TOKEN_KEY |
-| DATABASE_USER |
 | TWITTER_ACCESS_TOKEN_SECRET |
 
 Run `npm start` or `node .` for a dev server.
