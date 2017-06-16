@@ -31,11 +31,16 @@ newStoriesRef.on("value", function(snapshot) {
     console.log(`${story.id}: ${story.title} (${story.url}) [${story.deleted} ${story.dead}]`);
     if ((typeof story.deleted === 'undefined' || story.deleted === false)
         && (typeof story.dead === 'undefined' || story.dead === false)) {
-      client.post('statuses/update', {status: `${story.title} ${story.url}` },  function(error, tweet, response) {
+      var message;
+      if (story.url) {
+        message = `${story.title} ${story.url}`;
+      } else {
+        message = `${story.title}`;
+      }
+      client.post('statuses/update', { status: message },  function(error, tweet, response) {
         if(error) throw error;
           console.log(`${story.id}: @@@ Tweeted`);
-        });
+      });
     }
-
   });
 });
