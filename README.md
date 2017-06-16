@@ -9,7 +9,7 @@ This project was started as a learning experience and I welcome anyone else in t
 Set the environemnt variables:
 
 | Environment Variable |
-| ---| --- |
+| ---|
 | TWITTER_CONSUMER_KEY |
 | TWITTER_CONSUMER_SECRET |
 | TWITTER_ACCESS_TOKEN_KEY |
