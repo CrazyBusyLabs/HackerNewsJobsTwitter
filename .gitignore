@@ -1,3 +1,6 @@
+# OS specifics
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -38,3 +41,6 @@ jspm_packages
 
 # Environment setup
 .env
+
+# Do not store releases
+releases
