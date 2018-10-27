@@ -3,6 +3,9 @@ const dotenv = require('dotenv');
 const firebase = require('firebase');
 const Twitter = require('twitter');
 
+// Project modules
+const tagger = require('./tagger');
+
 // Constants
 const FIREBASE_HACKER_NEWS_URL = 'https://hacker-news.firebaseio.com';
 
@@ -34,48 +37,19 @@ function initialize() {
 
 /**
  * @function
- * @name shuffle
- */
-function shuffle(arr) {
-  for (let i = arr.length; i; i--) {
-      let j = Math.floor(Math.random() * i);
-      [arr[i - 1], arr[j]] = [arr[j], arr[i - 1]];
-  }
-}
-
-/**
- * @function
- * @name buildTags
- */
-function buildTags() {
-  const NBR_GENERIC_TAGS = 6;
-  let tags = [
-    '#hiring',
-    '#tweetmyjobs',
-    '#jobopening',
-    '#jobposting',
-    '#jobhunt',
-    '#joblisting',
-  ];
-  shuffle(tags);
-  
-  return tags.slice(0, NBR_GENERIC_TAGS);
-}
-
-/**
- * @function
  * @name tweet
  */
 function tweet({id, title, url}) {
-  const tags = buildTags();
-  const message = `${title} ${url} ${tags.join(' ')}`;
+  tagger.buildTags({ url }, (tags) => {
+    const message = `${title} ${url} ${tags.join(' ')}`;
 
-  twitter.post('statuses/update', { status: message },  (error, tweet, response) => {
-    if (error) {
-      console.error(error);
-    } else {
-      console.log(`${id}: ${message} @@@ Tweeted`);
-    }
+    twitter.post('statuses/update', { status: message },  (error, tweet, response) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log(`${id}: ${message} @@@ Tweeted`);
+      }
+    });
   });
 }
 
