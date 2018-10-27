@@ -3,7 +3,7 @@ set -e
 
 function build {
   filename=hackernews-jobs-twitter-v$version.zip
-  zip -r ./build/$filename ./package.json ./.npmrc ./src
+  zip -r ./build/$filename ./package.json ./.npmrc ./data ./src
 }
 
 function help {

@@ -32,7 +32,11 @@ function initialize() {
   console.log('Initializing Firebase');
   firebase.initializeApp(config);
 
+  console.log('Initializing Twitter');
   twitter = new Twitter(config.twitter);
+
+  console.log('Initializing Tagger');
+  tagger.initialize();
 }
 
 /**
@@ -41,7 +45,8 @@ function initialize() {
  */
 function tweet({id, title, url}) {
   tagger.buildTags({ url }, (tags) => {
-    const message = `${title} ${url} ${tags.join(' ')}`;
+    const hashtags = tags.map(a => `#${a}`).join(' ');
+    const message = `${title} ${url} ${hashtags}`;
 
     // Tweet only for production
     if (process.env.NODE_ENV && process.env.NODE_ENV === 'production') {
