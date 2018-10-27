@@ -43,13 +43,20 @@ function tweet({id, title, url}) {
   tagger.buildTags({ url }, (tags) => {
     const message = `${title} ${url} ${tags.join(' ')}`;
 
-    twitter.post('statuses/update', { status: message },  (error, tweet, response) => {
-      if (error) {
-        console.error(error);
-      } else {
-        console.log(`${id}: ${message} @@@ Tweeted`);
-      }
-    });
+    // Tweet only for production
+    if (process.env.NODE_ENV && process.env.NODE_ENV === 'production') {
+      twitter.post('statuses/update', { status: message },  (error, tweet, response) => {
+        if (error) {
+          console.error(error);
+        } else {
+          console.log(`${id}: ${message} @@@ Tweeted`);
+        }
+      });
+
+    // for development just console log
+    } else {
+      console.log(`DEV ${id}: ${message} @@@ would have been tweeted`);
+    }
   });
 }
 

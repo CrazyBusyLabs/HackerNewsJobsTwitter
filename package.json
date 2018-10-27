@@ -4,8 +4,9 @@
   "description": "Listen to HackerNews and post the job postings on Twitter @hackernewsjobs",
   "main": "src/listener.js",
   "scripts": {
-    "start": "node .",
-    "build": "env | grep npm_package_ | ./bin/build.sh $npm_package_version"
+    "start": "NODE_ENV=production node .",
+    "build": "env | grep npm_package_ | ./bin/build.sh $npm_package_version",
+    "dev": "NODE_ENV=development node ."
   },
   "repository": {
     "type": "git",

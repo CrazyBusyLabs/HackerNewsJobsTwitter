@@ -15,7 +15,7 @@ Set the environemnt variables:
 | TWITTER_ACCESS_TOKEN_KEY |
 | TWITTER_ACCESS_TOKEN_SECRET |
 
-Run `npm start` or `node .` for a dev server.
+Run `npm run dev` for a dev server.
   
 ---
 
