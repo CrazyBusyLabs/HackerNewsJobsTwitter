@@ -36,6 +36,30 @@ function initialize() {
  * @function
  * @name listen
  */
+function tweet({id, title, url}) {
+  const tags = [
+    '#hiring',
+    '#tweetmyjobs',
+    '#jobopening',
+    '#jobposting',
+    '#jobhunt',
+    '#joblisting',
+  ]
+  const message = `${title} ${url} ${tags.join(' ')}`;
+
+  twitter.post('statuses/update', { status: message },  (error, tweet, response) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log(`${id}: ${message} @@@ Tweeted`);
+    }
+  });
+}
+
+/**
+ * @function
+ * @name listen
+ */
 function listen() {
   console.log('Listening to Firebase');
   const newStoriesRef = firebase.database().ref("/v0/jobstories/0");
@@ -61,15 +85,7 @@ function listen() {
           && (typeof dead === 'undefined' || dead === false)
           && url) {
 
-        console.log(`${id}: ${title} (${url}) [${deleted} ${dead}]`);
-        const message = `${title} ${url}`;
-        twitter.post('statuses/update', { status: message },  (error, tweet, response) => {
-          if (error) {
-            console.error(error);
-          } else {
-            console.log(`${id}: @@@ Tweeted`);
-          }
-        });
+        tweet({id, title, url});
       }
     });
   });
