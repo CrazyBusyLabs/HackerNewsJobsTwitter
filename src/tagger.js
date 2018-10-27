@@ -5,14 +5,20 @@ const html2plaintext = require('html2plaintext');
 const stopword = require('stopword')
 
 let techDictionarry;
+let genericTags;
 
 /**
  * @function
  * @name buildTags
  */
 function initialize() {
-  const contents = fs.readFileSync(__dirname + '/../data/tech.txt', 'utf8');
-  techDictionarry = contents.split('\n');
+  techDictionarry = fs
+    .readFileSync(__dirname + '/../data/tech.txt', 'utf8')
+    .split('\n');
+
+  genericTags = fs
+    .readFileSync(__dirname + '/../data/tag.txt', 'utf8')
+    .split('\n');
 }
 
 /**
@@ -28,7 +34,7 @@ function shuffle(arr) {
 
 /**
  * @function
- * @name shuffle
+ * @name randomIntFromInterval
  * min and max included
  */
 function randomIntFromInterval(min,max)
@@ -45,22 +51,6 @@ function buildTags({ url }, callback) {
   const MAX_GENERIC_TAG = 5;
   const MAX_SPECIFIC_TAG = 5;
 
-  let tags = [
-    'hiring',
-    'tweetmyjobs',
-    'jobopening',
-    'jobposting',
-    'jobhunt',
-    'joblisting',
-    "jobsearch",
-    "jobs",
-    "opportunity",
-    "hotjobs"
-  ];
-
-
-  shuffle(tags);
-  
   axios.get(url)
     .then((response) => {
         if(response.status === 200) {
@@ -96,7 +86,8 @@ function buildTags({ url }, callback) {
           
           // add some generic tags if necessary
           const numberOfTags = randomIntFromInterval(MIN_GENERIC_TAG, MAX_GENERIC_TAG);
-          hashtags.unshift(...tags.slice(0, numberOfTags));
+          shuffle(genericTags);
+          hashtags.unshift(...genericTags.slice(0, numberOfTags));
 
           callback(hashtags);
         }
