@@ -9,7 +9,7 @@ This project was started as a learning experience and I welcome anyone else in t
 Set the environemnt variables:
 
 | Environment Variable |
-| ---|
+| --- |
 | TWITTER_CONSUMER_KEY |
 | TWITTER_CONSUMER_SECRET |
 | TWITTER_ACCESS_TOKEN_KEY |
@@ -17,6 +17,10 @@ Set the environemnt variables:
 
 Run `npm run dev` for a dev server.
   
+## Deployment
+
+Set the `eb` command and `npm run deploy`
+
 ---
 
 Credit where credit is due:
