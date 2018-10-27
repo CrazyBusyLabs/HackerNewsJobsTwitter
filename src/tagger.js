@@ -41,7 +41,7 @@ function randomIntFromInterval(min,max)
  * @name buildTags
  */
 function buildTags({ url }, callback) {
-  const MIN_GENERIC_TAG = 2;
+  const MIN_GENERIC_TAG = 3;
   const MAX_GENERIC_TAG = 5;
   const MAX_SPECIFIC_TAG = 5;
 
