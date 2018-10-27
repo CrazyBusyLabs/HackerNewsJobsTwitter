@@ -91,12 +91,12 @@ function buildTags({ url }, callback) {
             .sort((a, b) => b[1] - a[1])
             // keep only the word
             .map(a => a[0])
+            // linit the number of tags
             .slice(0, MAX_SPECIFIC_TAG)
           
-          if (hashtags.length < tags.length) {
-            const numberOfTags = randomIntFromInterval(MIN_GENERIC_TAG, MAX_GENERIC_TAG);
-            hashtags.unshift(...tags.slice(0, numberOfTags));
-          }
+          // add some generic tags if necessary
+          const numberOfTags = randomIntFromInterval(MIN_GENERIC_TAG, MAX_GENERIC_TAG);
+          hashtags.unshift(...tags.slice(0, numberOfTags));
 
           callback(hashtags);
         }
