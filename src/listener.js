@@ -1,17 +1,10 @@
 // Libraries
-var firebase = require('firebase');
-var Twitter = require('twitter');
+const dotenv = require('dotenv');
+const firebase = require('firebase');
+const Twitter = require('twitter');
 
-// Configuration
-var config = {
-  databaseURL: "https://hacker-news.firebaseio.com",
-  twitter: {
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-  }
-};
+// Constants
+const FIREBASE_HACKER_NEWS_URL = 'https://hacker-news.firebaseio.com';
 
 // twitter client
 let twitter;
@@ -21,6 +14,18 @@ let twitter;
  * @name myFunction
  */
 function initialize() {
+  console.log('Initializing Configuration');
+  dotenv.config()
+  const config = {
+    databaseURL: FIREBASE_HACKER_NEWS_URL,
+    twitter: {
+      consumer_key: process.env.TWITTER_CONSUMER_KEY,
+      consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+      access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+      access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+    }
+  };
+
   console.log('Initializing Firebase');
   firebase.initializeApp(config);
 
@@ -36,19 +41,22 @@ function listen() {
   const newStoriesRef = firebase.database().ref("/v0/jobstories/0");
 
   // process new events
-  newStoriesRef.on("value", (snapshot) => {
+  newStoriesRef.on('value', (snapshot) => {
 
     // get the event data
-    var storyRef = firebase.database().ref(`/v0/item/${snapshot.val()}`);
+    const storyRef = firebase.database().ref(`/v0/item/${snapshot.val()}`);
     storyRef.on('value', (storySnapshot) => {
 
       if(storySnapshot.val() === null) {
           return
       }
-      var story = storySnapshot.val();
+      const story = storySnapshot.val();
       storyRef.off();
 
       const {id, title, url, deleted, dead} = story;
+
+      // only keeps the stories that are not deleted, dead
+      // and that have an url
       if ((typeof deleted === 'undefined' || deleted === false)
           && (typeof dead === 'undefined' || dead === false)
           && url) {
