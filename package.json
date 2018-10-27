@@ -1,11 +1,11 @@
 {
   "name": "hackernews-jobs-twitter",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "Listen to HackerNews and post the job postings on Twitter @hackernewsjobs",
   "main": "src/listener.js",
   "scripts": {
     "start": "NODE_ENV=production node .",
-    "build": "env | grep npm_package_ | ./bin/build.sh $npm_package_version",
+    "deploy": "env | grep npm_package_ | ./bin/deploy.sh $npm_package_version",
     "dev": "NODE_ENV=development node ."
   },
   "repository": {

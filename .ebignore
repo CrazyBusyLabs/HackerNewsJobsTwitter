@@ -1,0 +1,8 @@
+node_modules
+
+.ebignore
+.env
+.gitignore
+
+package-lock.json
+README.md

@@ -42,5 +42,7 @@ jspm_packages
 # Environment setup
 .env
 
-# Do not store build
-build
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
