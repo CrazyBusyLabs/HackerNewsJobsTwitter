@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/jcurlier/hackernews-jobs-twitter.svg?style=svg)](https://circleci.com/gh/jcurlier/hackernews-jobs-twitter)
 
-A simple Firebase listener in node.js to get the new job posts from HackerNews and then to publish them on the [@hackernewsjobs](https://twitter.com/hackernewsjobs) channel on Twitter.
+A simple Firebase listener in node.js to get the new job posts from HackerNews and then to publish them on the *non-official*  [@hackernewsjobs](https://twitter.com/hackernewsjobs) channel on Twitter.
 
 This project was started as a learning experience and I welcome anyone else in the web development community to play with it :)
 
