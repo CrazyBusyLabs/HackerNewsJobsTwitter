@@ -14,7 +14,8 @@ let genericTags;
 function initialize() {
   techDictionarry = fs
     .readFileSync(__dirname + '/../data/tech.txt', 'utf8')
-    .split('\n');
+    .split('\n')
+    .map(tech => tech.toLowerCase());
 
   genericTags = fs
     .readFileSync(__dirname + '/../data/tag.txt', 'utf8')

@@ -1,38 +1,62 @@
-ai
-android
-angular
-aws
-backbone
-clojure
-css
-django
-docker
-drupal
-elixir
-ember
-erlang
-firebase
-hadoop
-haskell
-html
-ionic
-ios
-java
-javascript
-mongodb
-mysql
-node
-objective-c
-photoshop
-php
-postgres
-python
-rails
-react-native
-react
-ruby
-scala
-spring
-swift
-wordpress
-xamarin
+.NET
+Adobe Illustrator
+AI
+Amazon Kinesis
+Amazon Redshift
+Android
+Angular
+Apache Kafha
+Apache Spark
+AWS
+AWS Lambda
+Backbone
+C++
+Chrome Extension
+Clojure
+Computer Vision
+CSS
+Django
+Docker
+Drupal
+Elixir
+Ember
+Erlang
+Firebase
+Go
+Hadoop
+Haskell
+HTML
+Ionic
+IOS
+Java
+Javascript
+Layer
+Machine Learning
+MongoDB
+MYSQL
+Natual Language Processing
+Node
+Objective C
+Ocaml
+Parse
+Phonegap
+Photoshop
+PHP
+Postgres
+Python
+Rails
+React
+React Native
+RethinkDB
+Ruby
+Scala
+scikit-learn
+Shopify
+Sketch
+Socket.io
+Spring
+Swift
+Typography
+WatchOS
+Wordpress
+Xamarin
