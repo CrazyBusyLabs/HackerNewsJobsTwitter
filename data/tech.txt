@@ -10,6 +10,7 @@ Apache Spark
 AWS
 AWS Lambda
 Backbone
+Backend
 C++
 Chrome Extension
 Clojure
@@ -22,6 +23,8 @@ Elixir
 Ember
 Erlang
 Firebase
+Frontend
+Fullstack
 Go
 Hadoop
 Haskell
@@ -47,6 +50,7 @@ Python
 Rails
 React
 React Native
+Redux
 RethinkDB
 Ruby
 Scala

@@ -2,7 +2,6 @@
 const axios = require('axios');
 const fs = require('fs')
 const html2plaintext = require('html2plaintext');
-const stopword = require('stopword')
 
 let techDictionarry;
 let genericTags;
@@ -57,38 +56,33 @@ function buildTags({ url }, callback) {
         if(response.status === 200) {
           const html = response.data;
           const text = html2plaintext(html);
-          const cleanupText = text.toLowerCase();
 
-          const textArray = cleanupText.split(' ');
+          // keep only the technologies from the text
+          const technologies = text
+            .split(' ')
+            .map(word => word.toLowerCase().replace(/[^a-z]+/g, ''))
+            .filter(word => techDictionarry.includes(word));
 
-          const words = stopword
-            .removeStopwords(textArray)
-            .filter(word => /^[a-zA-Z]+$/.test(word))
+          // wrights the technologies
+          const weightsTechnologies = technologies
+            .reduce(
+              (weights, word) => weights.set(word, weights.get(word) + 1 || 1), 
+              new Map([])
+            );
 
-          const technologies = words
-            .filter(word => techDictionarry.includes(word))       
-
-          const weightsWords = {};
-          technologies.map(word => {
-            weightsWords[word] = weightsWords[word] + 1 || 1;
-          });
-          const weightsWordsArray = [];
-          for (let word in weightsWords) {
-            const weight = weightsWords[word];
-            weightsWordsArray.push([word, weight]);
-          }
-          const hashtags = weightsWordsArray
+            // create the technology hashtags
+          const technologyHashtags = Array.from(weightsTechnologies)
             // sort descendant
             .sort((a, b) => b[1] - a[1])
-            // keep only the word
-            .map(a => a[0])
-            // linit the number of tags
-            .slice(0, MAX_SPECIFIC_TAG)
+            // keep only the technology word (remove the weight)
+            .map(a => a[0]);
           
-          // add some generic tags if necessary
-          const numberOfTags = randomIntFromInterval(MIN_GENERIC_TAG, MAX_GENERIC_TAG);
           shuffle(genericTags);
-          hashtags.unshift(...genericTags.slice(0, numberOfTags));
+
+          const hashtags = [
+            ...genericTags.slice(0, randomIntFromInterval(MIN_GENERIC_TAG, MAX_GENERIC_TAG)),
+            ...technologyHashtags.slice(0, MAX_SPECIFIC_TAG),
+          ];
 
           callback(hashtags);
         }
