@@ -5,11 +5,11 @@
 
 A simple Firebase listener in node.js to get the new job posts from HackerNews and then to publish them on the *non-official*  [@hackernewsjobs](https://twitter.com/hackernewsjobs) channel on Twitter.
 
-This project was started as a learning experience and I welcome anyone else in the web development community to play with it :smiley:
+This project was started as a learning experience and I welcome anyone else in the web development community to play with it :smiley: or improve it  :rocket:
 
 ## Installation
 
-Set the environemnt variables vy creating the `.env` for `development` and using your deployment capabilities for adding environment variables in `production`:
+Set the environment variables by creating the `.env` for `development` and using your deployment capabilities for adding environment variables in `production`:
 
 See https://apps.twitter.com/ to create an application.
 
