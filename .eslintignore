@@ -1,0 +1,5 @@
+.circleci
+.elasticbeanstalk
+bin
+data
+node_modules
