@@ -14,7 +14,7 @@ Logger.info('Starting the application');
 const twitter = new Twitter(Config.Twitter);
 
 new FirebaseEmitter()
-  .on('newStory', twitter.tweet)
+  .on('newStory', async story => twitter.tweet(story))
   .start();
 
 Logger.info('The application is listening');

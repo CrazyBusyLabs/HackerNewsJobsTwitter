@@ -4,6 +4,7 @@ const Twitter = require('twitter');
 // Projects
 const Logger = require('./LoggerService');
 const Tagger = require('./TagService');
+
 /**
  * TwitterService represents a singleton TwitterService.
  * @class
@@ -12,9 +13,9 @@ class TwitterService {
   /**
    * @constructor
    */
-  constructor() {
+  constructor(config) {
     Logger.info('Initializing Twitter');
-    this.twitter = new Twitter();
+    this.twitter = new Twitter(config);
   }
 
   /**
