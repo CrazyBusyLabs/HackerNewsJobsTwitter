@@ -24,8 +24,7 @@ class FirebaseEmitter extends EventEmitter {
   }
 
   /**
-   * @function
-   * @name start
+   * @method
    */
   start() {
     Logger.info('Listening to Firebase stories');
