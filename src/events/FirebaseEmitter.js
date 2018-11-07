@@ -34,7 +34,7 @@ class FirebaseEmitter extends EventEmitter {
     newStoriesRef.on('value', (snapshot) => {
       // get the event data
       const storyRef = firebase.database().ref(`/v0/item/${snapshot.val()}`);
-      storyRef.on('value', async (storySnapshot) => {
+      storyRef.on('value', (storySnapshot) => {
         if (storySnapshot.val() === null) {
           return;
         }
