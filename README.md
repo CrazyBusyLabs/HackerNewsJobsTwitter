@@ -1,7 +1,6 @@
 # HackerNews Jobs Twitter Integration
 
 [![CircleCI](https://circleci.com/gh/crazybusycom/hackernews-jobs-twitter.svg?style=svg)](https://circleci.com/gh/crazybusycom/hackernews-jobs-twitter)
- [![Twitter](https://img.shields.io/twitter/follow/hackernewsjobs.svg?style=social&label=Follow)](https://twitter.com/hackernewsjobs)
 
 A simple Firebase listener in node.js to get the new job posts from HackerNews and then to publish them on the *non-official*  [@hackernewsjobs](https://twitter.com/hackernewsjobs) channel on Twitter.
 
